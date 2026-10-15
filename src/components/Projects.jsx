@@ -1,5 +1,7 @@
+import SectionHeading from "./SectionHeading"
 import { FaGithub } from "react-icons/fa"
 import Reveal from "./Reveal"
+import TiltCard from "./TiltCard"
 import {
   ArrowUpRight,
   ChartColumn,
@@ -39,7 +41,7 @@ function Projects() {
         <Reveal className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
             <p className="section-label">04 / Selected work</p>
-            <h2 id="projects-heading" className="section-title">Featured projects<span className="text-blue-400">.</span></h2>
+            <SectionHeading id="projects-heading" className="section-title">Featured projects<span className="text-blue-400">.</span></SectionHeading>
             <p className="body-copy mt-5 max-w-xl text-sm">Placeholder projects demonstrating how the final project cards will appear.</p>
           </div>
           <span className="flex items-center gap-2 font-mono text-[11px] text-slate-400"><CodeXml size={16} />More projects coming soon</span>
@@ -48,7 +50,8 @@ function Projects() {
           {projects.map((project, index) => {
             const Icon = project.icon
             return (
-              <Reveal as="article" key={project.title} className="panel interactive-card flex flex-col overflow-hidden">
+              <Reveal key={project.title} delay={index * 0.04} className="flex min-w-0">
+              <TiltCard className="panel interactive-card flex flex-1 flex-col overflow-hidden">
                 <div className="project-art" aria-hidden="true">
                   <span className="absolute left-5 top-4 font-mono text-[10px] text-slate-400">project / 0{index + 1}</span>
                   <Icon size={42} strokeWidth={1.2} className="relative z-10 text-blue-300" />
@@ -64,6 +67,7 @@ function Projects() {
                     {!project.codeUrl && !project.demoUrl && <span className="font-mono text-[10px] text-slate-400">Project links coming soon</span>}
                   </div>
                 </div>
+              </TiltCard>
               </Reveal>
             )
           })}

@@ -1,4 +1,6 @@
+import SectionHeading from "./SectionHeading"
 import Reveal from "./Reveal"
+import TimelineProgress from "./TimelineProgress"
 import { Calendar, CircleCheckBig, MapPin } from "lucide-react"
 
 const experiences = [
@@ -36,12 +38,12 @@ function Experience() {
       <div className="container-shell grid gap-4 lg:grid-cols-[0.8fr_1.4fr] lg:gap-20">
         <Reveal>
           <p className="section-label">03 / Professional journey</p>
-          <h2 id="experience-heading" className="section-title">Experience<span className="text-blue-400">.</span></h2>
+          <SectionHeading id="experience-heading" className="section-title">Experience<span className="text-blue-400">.</span></SectionHeading>
           <p className="body-copy mt-5 max-w-sm">A timeline of the roles, responsibilities, and results that shaped my technical experience.</p>
         </Reveal>
-        <div className="timeline !mt-6 space-y-6 lg:!mt-0">
-          {experiences.map((experience) => (
-            <Reveal as="article" key={`${experience.company}-${experience.role}`} className="timeline-item panel p-6 sm:p-8">
+        <TimelineProgress>
+          {experiences.map((experience, index) => (
+            <Reveal as="article" key={`${experience.company}-${experience.role}`} delay={index * 0.04} className="timeline-item panel p-6 sm:p-8">
               <p className="font-mono text-xs text-blue-300">{experience.company}</p>
               <h3 className="mt-3 text-xl font-medium tracking-tight sm:text-2xl">{experience.role}</h3>
               <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-xs text-slate-400">
@@ -61,7 +63,7 @@ function Experience() {
               )}
             </Reveal>
           ))}
-        </div>
+        </TimelineProgress>
       </div>
     </section>
   )

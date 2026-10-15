@@ -1,3 +1,4 @@
+import SectionHeading from "./SectionHeading"
 import Reveal from "./Reveal"
 import { Braces, Cloud, Database, ChartLine } from "lucide-react"
 
@@ -31,7 +32,7 @@ function Skills() {
         <Reveal>
           <p className="section-label">02 / Technical toolkit</p>
           <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
-            <h2 id="skills-heading" className="section-title max-w-2xl">Skills that connect software and data.</h2>
+            <SectionHeading id="skills-heading" className="section-title max-w-2xl">Skills that connect software and data.</SectionHeading>
             <p className="body-copy max-w-xs text-sm">These are placeholder skills that we will replace with your exact technical stack.</p>
           </div>
         </Reveal>
@@ -39,7 +40,7 @@ function Skills() {
           {skillGroups.map((group, index) => {
             const Icon = group.icon
             return (
-              <Reveal as="article" key={group.title} className="panel interactive-card p-6 sm:p-8">
+              <Reveal as="article" key={group.title} delay={index * 0.025} className="skill-card panel interactive-card p-6 sm:p-8">
                 <div className="mb-6 flex items-center justify-between">
                   <span className="icon-box"><Icon size={21} /></span>
                   <span aria-hidden="true" className="font-mono text-xs text-slate-500">0{index + 1}</span>

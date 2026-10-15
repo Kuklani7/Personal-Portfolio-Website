@@ -1,3 +1,4 @@
+import SectionHeading from "./SectionHeading"
 import { ChartColumn, Lightbulb, Rocket, Users } from "lucide-react"
 import Reveal from "./Reveal"
 
@@ -14,7 +15,7 @@ function About() {
       <div className="container-shell grid items-start gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
         <Reveal>
           <p className="section-label">01 / About me</p>
-          <h2 id="about-heading" className="section-title">Technology, data, and thoughtful problem-solving.</h2>
+          <SectionHeading id="about-heading" className="section-title">Technology, data, and thoughtful problem-solving.</SectionHeading>
           <p className="body-copy mt-6">I am a developer and data professional who enjoys creating responsive applications, reliable systems, and insightful analytics.</p>
           <p className="body-copy mt-4">My focus is on developing efficient applications and intelligent solutions, with a passion for solving complex engineering challenges.</p>
           <div className="mt-7 flex items-center gap-3 border-t border-slate-700/50 pt-6 font-mono text-xs text-slate-400"><span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />Software development meets data analytics.</div>

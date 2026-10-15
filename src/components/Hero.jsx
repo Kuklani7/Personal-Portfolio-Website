@@ -1,13 +1,16 @@
-import { ArrowRight, Braces, ChartColumn, Database, FileText, GitBranch, Terminal } from "lucide-react"
+﻿import { ArrowRight, Braces, ChartColumn, Database, FileText } from "lucide-react"
 import { FaGithub, FaLinkedin } from "react-icons/fa"
 import Reveal from "./Reveal"
+import HeroIntro from "./HeroIntro"
+import AmbientHero from "./AmbientHero"
+import HeroVisual from "./HeroVisual"
 import { profile } from "../data/profile"
 
 function Hero() {
   return (
-    <section id="home" aria-labelledby="hero-heading" className="hero-section">
+    <AmbientHero>
       <div className="container-shell hero-grid">
-        <Reveal>
+        <HeroIntro>
           <div className="availability"><span className="availability-dot" />Available for new opportunities</div>
           <p className="mt-8 mb-5 font-mono text-xs text-slate-400">Software Development <span className="px-1 text-blue-400">/</span> Data Analytics</p>
           <h1 id="hero-heading" className="hero-title">
@@ -31,28 +34,9 @@ function Hero() {
               <a href={`mailto:${profile.email}?subject=Resume%20request`} className="social-link"><FileText size={16} />Request résumé</a>
             )}
           </div>
-        </Reveal>
-        <Reveal className="editor-wrap">
-          <div className="editor">
-            <div className="editor-titlebar">
-              <div aria-hidden="true" className="editor-dots"><span className="bg-[#f18080]" /><span className="bg-[#e8c477]" /><span className="bg-[#70bfa3]" /></div>
-              <span>rachit / workspace</span><Terminal size={13} aria-hidden="true" />
-            </div>
-            <div className="editor-tab"><Braces size={13} className="text-blue-400" /> engineer.js</div>
-            <div className="editor-code" aria-label="Code illustration of Rachit's engineering focus">
-              <div className="code-line"><code className="syntax-comment">// Thoughtful code. Useful solutions.</code></div>
-              <div className="code-line"><code><span className="syntax-keyword">const</span> <span className="syntax-name">engineer</span> = {"{"}</code></div>
-              <div className="code-line"><code>{"  "}name: <span className="syntax-string">"Rachit Kuklani"</span>,</code></div>
-              <div className="code-line"><code>{"  "}focus: [</code></div>
-              <div className="code-line"><code>{"    "}<span className="syntax-string">"Software development"</span>,</code></div>
-              <div className="code-line"><code>{"    "}<span className="syntax-string">"Data analytics"</span></code></div>
-              <div className="code-line"><code>{"  "}],</code></div>
-              <div className="code-line"><code>{"  "}mindset: <span className="syntax-string">"Problem solver"</span>,</code></div>
-              <div className="code-line"><code>{"  "}status: <span className="syntax-string">"Always learning"</span></code></div>
-              <div className="code-line"><code>{"};"}</code></div>
-            </div>
-            <div className="editor-status"><span className="flex items-center gap-1.5"><GitBranch size={12} />main</span><span>JavaScript · UTF-8</span></div>
-          </div>
+        </HeroIntro>
+        <Reveal className="min-w-0">
+          <HeroVisual />
           <p className="mt-5 text-center font-mono text-[10px] text-slate-400">Where engineering meets curiosity.</p>
         </Reveal>
       </div>
@@ -62,7 +46,7 @@ function Hero() {
         <span className="flex items-center gap-2"><Database size={14} />Data</span>
         <span className="flex items-center gap-2"><ChartColumn size={14} />Analytics</span>
       </div>
-    </section>
+    </AmbientHero>
   )
 }
 export default Hero

@@ -1,3 +1,4 @@
+import SectionHeading from "./SectionHeading"
 import { ArrowUpRight, Mail } from "lucide-react"
 import { FaGithub, FaLinkedin } from "react-icons/fa"
 import Reveal from "./Reveal"
@@ -10,7 +11,7 @@ function Contact() {
         <Reveal className="panel contact-panel grid gap-10 p-7 sm:p-12 lg:grid-cols-[1.25fr_1fr] lg:items-center lg:gap-20 lg:p-16">
           <div>
             <p className="section-label">05 / Let's connect</p>
-            <h2 id="contact-heading" className="section-title">Interested in working <span className="text-gradient">together?</span></h2>
+            <SectionHeading id="contact-heading" className="section-title">Interested in working <span className="text-gradient">together?</span></SectionHeading>
             <p className="body-copy mt-6 max-w-lg">
               I'm always open to discussing software engineering opportunities,
               collaborating on projects, and connecting with fellow developers.
