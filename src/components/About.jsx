@@ -18,7 +18,7 @@ function About() {
           <SectionHeading id="about-heading" className="section-title">Technology, data, and thoughtful problem-solving.</SectionHeading>
           <p className="body-copy mt-6">I am a developer and data professional who enjoys creating responsive applications, reliable systems, and insightful analytics.</p>
           <p className="body-copy mt-4">My focus is on developing efficient applications and intelligent solutions, with a passion for solving complex engineering challenges.</p>
-          <div className="mt-7 flex items-center gap-3 border-t border-slate-700/50 pt-6 font-mono text-xs text-slate-400"><span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />Software development meets data analytics.</div>
+          <div className="mt-7 flex items-center gap-3 border-t border-line pt-6 font-mono text-xs text-muted"><span className="h-1.5 w-1.5 rounded-full bg-warm" />Software development meets data analytics.</div>
         </Reveal>
         <div className="grid gap-4 sm:grid-cols-2">
           {highlights.map(({ icon: Icon, title, text }) => (

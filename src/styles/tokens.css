@@ -1,0 +1,55 @@
+/* Edit these tokens to change the shared visual identity.
+   The existing 3D scene keeps its own small, isolated palette for a later phase. */
+:root {
+  --background: #faf8f4;
+  --surface: #ffffff;
+  --surface-muted: #f0eee9;
+  --text: #19233c;
+  --muted: #667085;
+  --muted-on-tint: #596477;
+  --accent: #355cff;
+  --accent-hover: #2448db;
+  --accent-ink: #294cdb;
+  --accent-soft: #e9edff;
+  --warm: #ff865e;
+  --warm-soft: #ffe9df;
+  --warm-ink: #9c4225;
+  --on-accent: #ffffff;
+  --border: #c9ced8;
+  --border-strong: #19233c;
+  --success: #256143;
+  --success-soft: #eaf5ed;
+  --ambient-color: #355cff08;
+
+  --radius-card: 14px;
+  --radius-control: 7px;
+  --shadow-offset: 4px 4px 0 var(--border-strong);
+  --shadow-accent: 5px 5px 0 var(--accent);
+  --shadow-warm: 4px 4px 0 var(--warm);
+  --duration-fast: 180ms;
+  --duration-normal: 240ms;
+  --ease-ui: cubic-bezier(0.2, 0.65, 0.3, 1);
+
+  --scene-background: #0e1627;
+  --scene-surface: #151e32;
+  --scene-text: #c2d0e5;
+  --scene-muted: #93a7c4;
+  --scene-border: #334769;
+  --scene-accent: #82b4ff;
+  --scene-keyword: #b4a0f6;
+  --scene-string: #91d8b7;
+  --scene-name: #80ceef;
+}
+
+@theme inline {
+  --color-paper: var(--background);
+  --color-surface: var(--surface);
+  --color-soft: var(--surface-muted);
+  --color-ink: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-warm: var(--warm);
+  --color-warm-soft: var(--warm-soft);
+  --color-line: var(--border);
+}

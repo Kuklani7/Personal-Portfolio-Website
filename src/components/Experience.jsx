@@ -38,23 +38,23 @@ function Experience() {
       <div className="container-shell grid gap-4 lg:grid-cols-[0.8fr_1.4fr] lg:gap-20">
         <Reveal>
           <p className="section-label">03 / Professional journey</p>
-          <SectionHeading id="experience-heading" className="section-title">Experience<span className="text-blue-400">.</span></SectionHeading>
+          <SectionHeading id="experience-heading" className="section-title">Experience<span className="text-accent">.</span></SectionHeading>
           <p className="body-copy mt-5 max-w-sm">A timeline of the roles, responsibilities, and results that shaped my technical experience.</p>
         </Reveal>
         <TimelineProgress>
           {experiences.map((experience, index) => (
             <Reveal as="article" key={`${experience.company}-${experience.role}`} delay={index * 0.04} className="timeline-item panel p-6 sm:p-8">
-              <p className="font-mono text-xs text-blue-300">{experience.company}</p>
+              <p className="font-mono text-xs text-accent">{experience.company}</p>
               <h3 className="mt-3 text-xl font-medium tracking-tight sm:text-2xl">{experience.role}</h3>
-              <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-xs text-slate-400">
+              <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-xs text-muted">
                 <span className="flex items-center gap-2"><Calendar size={14} />{experience.period}</span>
                 <span className="flex items-center gap-2"><MapPin size={14} />{experience.location}</span>
               </div>
               <p className="body-copy mt-5 text-sm">{experience.description}</p>
-              <ul className="mt-5 space-y-3 border-t border-slate-700/50 pt-5">
+              <ul className="mt-5 space-y-3 border-t border-line pt-5">
                 {experience.achievements.map((achievement) => (
-                  <li key={achievement} className="flex gap-3 text-sm leading-7 text-slate-300">
-                    <CircleCheckBig size={16} className="mt-1.5 shrink-0 text-blue-400" />{achievement}
+                  <li key={achievement} className="flex gap-3 text-sm leading-7 text-ink">
+                    <CircleCheckBig size={16} className="mt-1.5 shrink-0 text-accent" />{achievement}
                   </li>
                 ))}
               </ul>

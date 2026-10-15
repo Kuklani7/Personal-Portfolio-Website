@@ -43,7 +43,7 @@ function Skills() {
               <Reveal as="article" key={group.title} delay={index * 0.025} className="skill-card panel interactive-card p-6 sm:p-8">
                 <div className="mb-6 flex items-center justify-between">
                   <span className="icon-box"><Icon size={21} /></span>
-                  <span aria-hidden="true" className="font-mono text-xs text-slate-500">0{index + 1}</span>
+                  <span aria-hidden="true" className="font-mono text-xs text-muted">0{index + 1}</span>
                 </div>
                 <h3 className="text-xl font-medium tracking-tight">{group.title}</h3>
                 <div className="mt-5 flex flex-wrap gap-2">

@@ -1,6 +1,6 @@
 import { Component, Suspense, lazy, useEffect, useRef, useState, useSyncExternalStore } from "react"
 import { useInView } from "motion/react"
-import { Braces, GitBranch, Pause, Play, Terminal } from "lucide-react"
+import { Pause, Play } from "lucide-react"
 import useInteractiveMotion from "../hooks/useInteractiveMotion"
 import HeroFallback from "./HeroFallback"
 
@@ -54,13 +54,6 @@ export default function HeroVisual() {
 
   return (
     <div ref={visual} className="hero-visual" onPointerMove={move} onPointerLeave={reset} onPointerCancel={reset}>
-      <div className="editor-titlebar">
-        <div aria-hidden="true" className="editor-dots"><span className="bg-[#f18080]" /><span className="bg-[#e8c477]" /><span className="bg-[#70bfa3]" /></div>
-        <span>rachit / workspace</span>
-        {showScene ? <button type="button" className="scene-pause" aria-label={paused ? "Resume 3D motion" : "Pause 3D motion"} onClick={() => { reset(); setPaused((value) => !value) }}>
-          {paused ? <Play size={11} /> : <Pause size={11} />}<span>{paused ? "Resume" : "Pause"}</span>
-        </button> : <Terminal size={13} aria-hidden="true" />}
-      </div>
       <div className="hero-scene" aria-hidden="true" data-scene-mode={showScene ? "webgl" : "static"}>
         {showScene ? (
           <SceneBoundary onFailure={() => setFailed(true)}>
@@ -70,14 +63,10 @@ export default function HeroVisual() {
             </Suspense>
           </SceneBoundary>
         ) : <HeroFallback />}
-        <div className="scene-coordinate scene-coordinate-top">geometry / torus-knot</div>
-        <div className="scene-coordinate scene-coordinate-bottom">x · y · z</div>
       </div>
-      <div className="hero-focus-code font-mono">
-        <p className="flex items-center gap-2 text-[10px] text-slate-400"><Braces size={12} className="text-blue-300" />engineer.js</p>
-        <p className="mt-2"><span className="syntax-keyword">const</span> <span className="syntax-name">focus</span> = <span className="syntax-string">"Software + data analytics"</span>;</p>
-      </div>
-      <div className="editor-status"><span className="flex items-center gap-1.5"><GitBranch size={12} />main</span><span>Problem solver · Always learning</span></div>
+      {showScene && <button type="button" className="scene-pause" aria-label={paused ? "Resume 3D motion" : "Pause 3D motion"} onClick={() => { reset(); setPaused((value) => !value) }}>
+        {paused ? <Play size={10} /> : <Pause size={10} />}<span>{paused ? "Resume" : "Pause"}</span>
+      </button>}
     </div>
   )
 }

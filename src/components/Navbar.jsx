@@ -68,17 +68,17 @@ function Navbar() {
       if (!event.currentTarget.contains(event.relatedTarget)) setIsOpen(false)
     }}>
       <nav aria-label="Main navigation" className="container-shell flex h-[76px] items-center justify-between gap-4">
-        <a href="#home" onClick={() => setIsOpen(false)} className="flex min-h-11 items-center gap-2.5 font-heading text-sm font-semibold sm:text-base">
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-blue-400/25 bg-blue-500/10 text-blue-300"><CodeXml size={19} /></span>
-          {profile.name}<span aria-hidden="true" className="-ml-2 text-blue-400">.</span>
+        <a href="#home" onClick={() => setIsOpen(false)} className="brand-link">
+          <span className="brand-mark" aria-hidden="true"><CodeXml size={19} /></span>
+          <span>{profile.name}<span className="brand-dot" aria-hidden="true">.</span></span>
         </a>
-        <div className="hidden items-center gap-5 md:flex lg:gap-8">
+        <div className="hidden items-center gap-1 md:flex lg:gap-3">
           {links.map((link) => (
             <a key={link.href} href={link.href} aria-current={activeSection === link.href.slice(1) ? "location" : undefined} className="nav-link">{link.name}</a>
           ))}
-          <a href="#contact" aria-current={activeSection === "contact" ? "location" : undefined} className="button button-secondary !min-h-10 !px-4 !py-2 !text-xs">Contact Me <ArrowUpRight size={15} /></a>
+          <a href="#contact" aria-current={activeSection === "contact" ? "location" : undefined} className="button button-primary nav-contact ml-3">Contact Me <ArrowUpRight size={15} /></a>
         </div>
-        <button ref={menuButton} type="button" className="flex h-11 w-11 items-center justify-center rounded-lg border border-slate-700 text-slate-200 md:hidden" onClick={() => setIsOpen((open) => !open)} aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={isOpen} aria-controls="mobile-navigation">
+        <button ref={menuButton} type="button" className="menu-toggle" onClick={() => setIsOpen((open) => !open)} aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={isOpen} aria-controls="mobile-navigation">
           {isOpen ? <X size={21} /> : <Menu size={21} />}
         </button>
       </nav>

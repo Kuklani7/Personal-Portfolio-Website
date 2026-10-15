@@ -20,17 +20,17 @@ function Contact() {
             <div className="availability mt-7"><span className="availability-dot" />Available for new opportunities</div>
           </div>
           <div className="min-w-0">
-            <p className="mb-3 font-mono text-xs text-slate-400">Start a conversation</p>
-            <a href={`mailto:${profile.email}`} className="group flex min-h-20 items-center gap-4 rounded-xl border border-slate-600/50 bg-[#0b1020]/60 p-4 transition hover:border-blue-400/60 sm:p-5">
+            <p className="mb-3 font-mono text-xs text-muted">Start a conversation</p>
+            <a href={`mailto:${profile.email}`} className="contact-email">
               <span className="icon-box"><Mail size={21} /></span>
-              <span className="min-w-0 flex-1"><span className="mb-1 block text-xs text-slate-400">Email me</span><span className="break-all text-sm font-medium text-slate-100 sm:text-base">{profile.email}</span></span>
-              <ArrowUpRight className="shrink-0 text-blue-300" size={18} />
+              <span className="min-w-0 flex-1"><span className="mb-1 block text-xs text-muted">Email me</span><span className="break-all text-sm font-medium text-ink sm:text-base">{profile.email}</span></span>
+              <ArrowUpRight className="shrink-0 text-accent" size={18} />
             </a>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               <a href={profile.github} target="_blank" rel="noopener noreferrer" className="button button-secondary"><FaGithub size={18} />GitHub<span className="sr-only"> (opens in a new tab)</span><ArrowUpRight size={14} /></a>
               <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="button button-secondary"><FaLinkedin size={18} />LinkedIn<span className="sr-only"> (opens in a new tab)</span><ArrowUpRight size={14} /></a>
             </div>
-            <p className="mt-4 text-xs leading-6 text-slate-400">Email opens your mail app. Prefer a browser? Connect with me on LinkedIn.</p>
+            <p className="mt-4 text-xs leading-6 text-muted">Email opens your mail app. Prefer a browser? Connect with me on LinkedIn.</p>
           </div>
         </Reveal>
       </div>
