@@ -1,4 +1,4 @@
-import { motion } from "motion/react"
+import Reveal from "./Reveal"
 import { Braces, Cloud, Database, ChartLine } from "lucide-react"
 
 const skillGroups = [
@@ -26,48 +26,29 @@ const skillGroups = [
 
 function Skills() {
   return (
-    <section id="skills" className="border-y border-slate-200 bg-slate-50 py-24">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="section-label">Technical toolkit</p>
-          <h2 className="section-title">Skills that connect software and data</h2>
-          <p className="mt-5 text-slate-600">
-            These are placeholder skills that we will replace with your exact
-            technical stack.
-          </p>
-        </div>
-
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
+    <section id="skills" aria-labelledby="skills-heading" className="section section-alt">
+      <div className="container-shell">
+        <Reveal>
+          <p className="section-label">02 / Technical toolkit</p>
+          <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
+            <h2 id="skills-heading" className="section-title max-w-2xl">Skills that connect software and data.</h2>
+            <p className="body-copy max-w-xs text-sm">These are placeholder skills that we will replace with your exact technical stack.</p>
+          </div>
+        </Reveal>
+        <div className="mt-12 grid gap-5 md:grid-cols-2">
           {skillGroups.map((group, index) => {
             const Icon = group.icon
-
             return (
-              <motion.article
-                key={group.title}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.08 }}
-                className="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm transition hover:border-blue-300 hover:shadow-lg"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="rounded-xl bg-slate-900 p-3 text-white">
-                    <Icon size={23} />
-                  </div>
-                  <h3 className="text-lg font-bold">{group.title}</h3>
+              <Reveal as="article" key={group.title} className="panel interactive-card p-6 sm:p-8">
+                <div className="mb-6 flex items-center justify-between">
+                  <span className="icon-box"><Icon size={21} /></span>
+                  <span aria-hidden="true" className="font-mono text-xs text-slate-500">0{index + 1}</span>
                 </div>
-
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {group.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-medium text-slate-700"
-                    >
-                      {skill}
-                    </span>
-                  ))}
+                <h3 className="text-xl font-medium tracking-tight">{group.title}</h3>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {group.skills.map((skill) => <span key={skill} className="badge">{skill}</span>)}
                 </div>
-              </motion.article>
+              </Reveal>
             )
           })}
         </div>
@@ -75,5 +56,4 @@ function Skills() {
     </section>
   )
 }
-
 export default Skills

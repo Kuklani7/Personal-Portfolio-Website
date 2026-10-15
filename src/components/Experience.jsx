@@ -1,4 +1,4 @@
-import { motion } from "motion/react"
+import Reveal from "./Reveal"
 import { Calendar, CircleCheckBig, MapPin } from "lucide-react"
 
 const experiences = [
@@ -32,78 +32,38 @@ const experiences = [
 
 function Experience() {
   return (
-    <section id="experience" className="bg-white py-24">
-      <div className="mx-auto max-w-5xl px-6">
-        <div className="max-w-2xl">
-          <p className="section-label">Professional journey</p>
-          <h2 className="section-title">Experience</h2>
-          <p className="mt-5 text-slate-600">
-            A timeline of the roles, responsibilities, and results that shaped
-            my technical experience.
-          </p>
-        </div>
-
-        <div className="relative mt-14 space-y-8 before:absolute before:bottom-0 before:left-4 before:top-0 before:w-px before:bg-slate-200 md:before:left-1/2">
-          {experiences.map((experience, index) => (
-            <motion.article
-              key={`${experience.company}-${experience.role}`}
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className={`relative ml-12 rounded-2xl border border-slate-200 bg-slate-50 p-7 shadow-sm md:ml-0 md:w-[46%] ${
-                index % 2 === 0 ? "md:mr-auto" : "md:ml-auto"
-              }`}
-            >
-              <span
-                className={`absolute top-8 h-4 w-4 rounded-full border-4 border-white bg-blue-600 ${
-                  index % 2 === 0
-                    ? "-left-10 md:-right-[12.8%] md:left-auto"
-                    : "-left-10 md:-left-[12.8%]"
-                }`}
-              />
-
-              <p className="text-sm font-semibold text-blue-600">
-                {experience.company}
-              </p>
-              <h3 className="mt-2 text-xl font-bold text-slate-900">
-                {experience.role}
-              </h3>
-
-              <div className="mt-3 flex flex-wrap gap-4 text-sm text-slate-500">
-                <span className="flex items-center gap-1.5">
-                  <Calendar size={15} />
-                  {experience.period}
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <MapPin size={15} />
-                  {experience.location}
-                </span>
+    <section id="experience" aria-labelledby="experience-heading" className="section">
+      <div className="container-shell grid gap-4 lg:grid-cols-[0.8fr_1.4fr] lg:gap-20">
+        <Reveal>
+          <p className="section-label">03 / Professional journey</p>
+          <h2 id="experience-heading" className="section-title">Experience<span className="text-blue-400">.</span></h2>
+          <p className="body-copy mt-5 max-w-sm">A timeline of the roles, responsibilities, and results that shaped my technical experience.</p>
+        </Reveal>
+        <div className="timeline !mt-6 space-y-6 lg:!mt-0">
+          {experiences.map((experience) => (
+            <Reveal as="article" key={`${experience.company}-${experience.role}`} className="timeline-item panel p-6 sm:p-8">
+              <p className="font-mono text-xs text-blue-300">{experience.company}</p>
+              <h3 className="mt-3 text-xl font-medium tracking-tight sm:text-2xl">{experience.role}</h3>
+              <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-xs text-slate-400">
+                <span className="flex items-center gap-2"><Calendar size={14} />{experience.period}</span>
+                <span className="flex items-center gap-2"><MapPin size={14} />{experience.location}</span>
               </div>
-
-              <p className="mt-5 leading-7 text-slate-600">
-                {experience.description}
-              </p>
-
-              <ul className="mt-5 space-y-3">
+              <p className="body-copy mt-5 text-sm">{experience.description}</p>
+              <ul className="mt-5 space-y-3 border-t border-slate-700/50 pt-5">
                 {experience.achievements.map((achievement) => (
-                  <li
-                    key={achievement}
-                    className="flex gap-3 text-sm leading-6 text-slate-600"
-                  >
-                    <CircleCheckBig
-                      size={17}
-                      className="mt-1 shrink-0 text-blue-600"
-                    />
-                    {achievement}
+                  <li key={achievement} className="flex gap-3 text-sm leading-7 text-slate-300">
+                    <CircleCheckBig size={16} className="mt-1.5 shrink-0 text-blue-400" />{achievement}
                   </li>
                 ))}
               </ul>
-            </motion.article>
+              {experience.technologies?.length > 0 && (
+                <div className="mt-5 flex flex-wrap gap-2">{experience.technologies.map((technology) => <span className="badge" key={technology}>{technology}</span>)}</div>
+              )}
+            </Reveal>
           ))}
         </div>
       </div>
     </section>
   )
 }
-
 export default Experience

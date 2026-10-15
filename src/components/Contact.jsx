@@ -1,126 +1,39 @@
-import { motion } from "motion/react";
-import { Mail, Send } from "lucide-react";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { ArrowUpRight, Mail } from "lucide-react"
+import { FaGithub, FaLinkedin } from "react-icons/fa"
+import Reveal from "./Reveal"
+import { profile } from "../data/profile"
 
 function Contact() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
-
   return (
-    <section id="contact" className="bg-white py-24">
-      <div className="mx-auto grid max-w-6xl gap-14 px-6 lg:grid-cols-2">
-        <motion.div
-          initial={{ opacity: 0, x: -25 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-        >
-          <p className="section-label">Let’s connect</p>
-          <h2 className="section-title">Interested in working together?</h2>
-
-          <p className="mt-6 max-w-lg leading-8 text-slate-600">
-            I'm always open to discussing software engineering opportunities,
-            collaborating on projects, and connecting with fellow developers.
-            Feel free to reach out through email, LinkedIn, or GitHub.
-          </p>
-
-          <div className="mt-9 space-y-4">
-            <div className="flex items-center gap-4 rounded-xl border border-slate-200 p-4">
-              <span className="rounded-lg bg-blue-100 p-3 text-blue-600">
-                <Mail size={20} />
-              </span>
-
-              <div>
-                <p className="text-sm text-slate-500">Email</p>
-                <a
-                  href="mailto:kuklanir@gmail.com"
-                  className="font-semibold hover:text-blue-600"
-                >
-                  kuklanir@gmail.com
-                </a>
-              </div>
-            </div>
-
-            <div className="flex flex-wrap gap-3">
-              <a
-                href="https://www.linkedin.com/in/rachitkuklani/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 rounded-lg border border-slate-200 px-4 py-3 font-medium text-slate-700 transition hover:border-blue-300 hover:text-blue-600"
-              >
-                <FaLinkedin size={19} />
-                LinkedIn
-              </a>
-
-              <a
-                href="https://github.com/kuklani7"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 rounded-lg border border-slate-200 px-4 py-3 font-medium text-slate-700 transition hover:border-blue-300 hover:text-blue-600"
-              >
-                <FaGithub size={19} />
-                GitHub
-              </a>
-            </div>
+    <section id="contact" aria-labelledby="contact-heading" className="section">
+      <div className="container-shell">
+        <Reveal className="panel contact-panel grid gap-10 p-7 sm:p-12 lg:grid-cols-[1.25fr_1fr] lg:items-center lg:gap-20 lg:p-16">
+          <div>
+            <p className="section-label">05 / Let's connect</p>
+            <h2 id="contact-heading" className="section-title">Interested in working <span className="text-gradient">together?</span></h2>
+            <p className="body-copy mt-6 max-w-lg">
+              I'm always open to discussing software engineering opportunities,
+              collaborating on projects, and connecting with fellow developers.
+              Feel free to reach out through email, LinkedIn, or GitHub.
+            </p>
+            <div className="availability mt-7"><span className="availability-dot" />Available for new opportunities</div>
           </div>
-        </motion.div>
-
-        <motion.form
-          initial={{ opacity: 0, x: 25 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          onSubmit={handleSubmit}
-          className="rounded-2xl border border-slate-200 bg-slate-50 p-7 shadow-sm"
-        >
-          <div className="grid gap-5 sm:grid-cols-2">
-            <label className="text-sm font-semibold text-slate-700">
-              Name
-              <input
-                type="text"
-                placeholder="Your name"
-                className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 font-normal outline-none transition focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
-              />
-            </label>
-
-            <label className="text-sm font-semibold text-slate-700">
-              Email
-              <input
-                type="email"
-                placeholder="you@example.com"
-                className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 font-normal outline-none transition focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
-              />
-            </label>
+          <div className="min-w-0">
+            <p className="mb-3 font-mono text-xs text-slate-400">Start a conversation</p>
+            <a href={`mailto:${profile.email}`} className="group flex min-h-20 items-center gap-4 rounded-xl border border-slate-600/50 bg-[#0b1020]/60 p-4 transition hover:border-blue-400/60 sm:p-5">
+              <span className="icon-box"><Mail size={21} /></span>
+              <span className="min-w-0 flex-1"><span className="mb-1 block text-xs text-slate-400">Email me</span><span className="break-all text-sm font-medium text-slate-100 sm:text-base">{profile.email}</span></span>
+              <ArrowUpRight className="shrink-0 text-blue-300" size={18} />
+            </a>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              <a href={profile.github} target="_blank" rel="noopener noreferrer" className="button button-secondary"><FaGithub size={18} />GitHub<span className="sr-only"> (opens in a new tab)</span><ArrowUpRight size={14} /></a>
+              <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="button button-secondary"><FaLinkedin size={18} />LinkedIn<span className="sr-only"> (opens in a new tab)</span><ArrowUpRight size={14} /></a>
+            </div>
+            <p className="mt-4 text-xs leading-6 text-slate-400">Email opens your mail app. Prefer a browser? Connect with me on LinkedIn.</p>
           </div>
-
-          <label className="mt-5 block text-sm font-semibold text-slate-700">
-            Subject
-            <input
-              type="text"
-              placeholder="What would you like to discuss?"
-              className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 font-normal outline-none transition focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
-            />
-          </label>
-
-          <label className="mt-5 block text-sm font-semibold text-slate-700">
-            Message
-            <textarea
-              rows="5"
-              placeholder="Write your message..."
-              className="mt-2 w-full resize-none rounded-lg border border-slate-300 bg-white px-4 py-3 font-normal outline-none transition focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
-            />
-          </label>
-
-          <button
-            type="submit"
-            className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 px-6 py-3.5 font-semibold text-white transition hover:bg-blue-700"
-          >
-            Send Message
-            <Send size={18} />
-          </button>
-        </motion.form>
+        </Reveal>
       </div>
     </section>
-  );
+  )
 }
-
-export default Contact;
+export default Contact

@@ -1,146 +1,68 @@
-import { motion } from "motion/react"
-import {
-  ArrowRight,
-  ChartColumn,
-  Braces,
-  Database,
-  GitBranch,
-  BriefcaseBusiness,
-} from "lucide-react"
+import { ArrowRight, Braces, ChartColumn, Database, FileText, GitBranch, Terminal } from "lucide-react"
+import { FaGithub, FaLinkedin } from "react-icons/fa"
+import Reveal from "./Reveal"
+import { profile } from "../data/profile"
 
 function Hero() {
   return (
-    <section
-      id="home"
-      className="tech-grid flex min-h-screen items-center border-b border-slate-200 pt-24"
-    >
-      <div className="mx-auto grid max-w-6xl items-center gap-14 px-6 py-20 lg:grid-cols-2">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700">
-            <span className="h-2 w-2 rounded-full bg-green-500" />
-            Available for new opportunities
-          </div>
-
-          <p className="mb-3 font-mono text-sm font-semibold uppercase tracking-[0.2em] text-blue-600">
-            Software Development × Data Analytics
-          </p>
-
-          <h1 className="max-w-3xl text-5xl font-bold leading-tight tracking-tight text-slate-950 md:text-6xl">
-            Building <span className="text-gradient">intelligent software</span>{" "}
-            that solves real-world problems.
+    <section id="home" aria-labelledby="hero-heading" className="hero-section">
+      <div className="container-shell hero-grid">
+        <Reveal>
+          <div className="availability"><span className="availability-dot" />Available for new opportunities</div>
+          <p className="mt-8 mb-5 font-mono text-xs text-slate-400">Software Development <span className="px-1 text-blue-400">/</span> Data Analytics</p>
+          <h1 id="hero-heading" className="hero-title">
+            Building <span className="text-gradient">intelligent software</span> that solves real-world problems.
           </h1>
-
-          <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600">
+          <p className="body-copy mt-6 max-w-xl text-base sm:text-lg">
             I specialize in developing efficient applications, reliable systems,
             and intelligent solutions, with a passion for solving complex
             engineering challenges.
           </p>
-
-          <div className="mt-9 flex flex-wrap gap-4">
-            <a
-              href="#projects"
-              className="flex items-center gap-2 rounded-lg bg-slate-900 px-6 py-3.5 font-semibold text-white transition hover:-translate-y-0.5 hover:bg-blue-600"
-            >
-              View Projects
-              <ArrowRight size={18} />
-            </a>
-
-            <a
-              href="#contact"
-              className="rounded-lg border border-slate-300 bg-white px-6 py-3.5 font-semibold text-slate-700 transition hover:border-blue-500 hover:text-blue-600"
-            >
-              Contact Me
-            </a>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a href="#projects" className="button button-primary">View Projects <ArrowRight size={17} /></a>
+            <a href="#contact" className="button button-secondary">Contact Me</a>
           </div>
-
-          <div className="mt-8 flex gap-3">
-            <button
-              type="button"
-              aria-label="GitBranch placeholder"
-              className="rounded-lg border border-slate-200 bg-white p-3 text-slate-600 transition hover:border-blue-300 hover:text-blue-600"
-            >
-              <GitBranch size={20} />
-            </button>
-
-            <button
-              type="button"
-              aria-label="BriefcaseBusiness placeholder"
-              className="rounded-lg border border-slate-200 bg-white p-3 text-slate-600 transition hover:border-blue-300 hover:text-blue-600"
-            >
-              <BriefcaseBusiness size={20} />
-            </button>
+          <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-1">
+            <a href={profile.github} target="_blank" rel="noopener noreferrer" className="social-link"><FaGithub size={17} />GitHub<span className="sr-only"> (opens in a new tab)</span></a>
+            <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="social-link"><FaLinkedin size={17} />LinkedIn<span className="sr-only"> (opens in a new tab)</span></a>
+            {profile.resumeUrl ? (
+              <a href={profile.resumeUrl} target="_blank" rel="noopener noreferrer" className="social-link"><FileText size={16} />Résumé<span className="sr-only"> (opens in a new tab)</span></a>
+            ) : (
+              <a href={`mailto:${profile.email}?subject=Resume%20request`} className="social-link"><FileText size={16} />Request résumé</a>
+            )}
           </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.94 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.65, delay: 0.15 }}
-          className="relative"
-        >
-          <div className="absolute -inset-5 rounded-3xl bg-gradient-to-r from-blue-200 to-cyan-200 opacity-50 blur-3xl" />
-
-          <div className="relative overflow-hidden rounded-2xl border border-slate-700 bg-slate-950 shadow-2xl">
-            <div className="flex items-center gap-2 border-b border-slate-800 px-5 py-4">
-              <span className="h-3 w-3 rounded-full bg-red-400" />
-              <span className="h-3 w-3 rounded-full bg-yellow-400" />
-              <span className="h-3 w-3 rounded-full bg-green-400" />
-              <span className="ml-3 font-mono text-xs text-slate-400">
-                portfolio.js
-              </span>
+        </Reveal>
+        <Reveal className="editor-wrap">
+          <div className="editor">
+            <div className="editor-titlebar">
+              <div aria-hidden="true" className="editor-dots"><span className="bg-[#f18080]" /><span className="bg-[#e8c477]" /><span className="bg-[#70bfa3]" /></div>
+              <span>rachit / workspace</span><Terminal size={13} aria-hidden="true" />
             </div>
-
-            <div className="space-y-2 p-7 font-mono text-sm leading-7 text-slate-300">
-              <p>
-                <span className="text-purple-400">const</span>{" "}
-                <span className="text-cyan-300">candidate</span> = {"{"}
-              </p>
-              <p className="pl-5">
-                focus:{" "}
-                <span className="text-green-300">
-                  "software + data analytics"
-                </span>
-                ,
-              </p>
-              <p className="pl-5">
-                mindset:{" "}
-                <span className="text-green-300">"problem solver"</span>,
-              </p>
-              <p className="pl-5">
-                status:{" "}
-                <span className="text-green-300">"always learning"</span>,
-              </p>
-              <p>{"}"}</p>
+            <div className="editor-tab"><Braces size={13} className="text-blue-400" /> engineer.js</div>
+            <div className="editor-code" aria-label="Code illustration of Rachit's engineering focus">
+              <div className="code-line"><code className="syntax-comment">// Thoughtful code. Useful solutions.</code></div>
+              <div className="code-line"><code><span className="syntax-keyword">const</span> <span className="syntax-name">engineer</span> = {"{"}</code></div>
+              <div className="code-line"><code>{"  "}name: <span className="syntax-string">"Rachit Kuklani"</span>,</code></div>
+              <div className="code-line"><code>{"  "}focus: [</code></div>
+              <div className="code-line"><code>{"    "}<span className="syntax-string">"Software development"</span>,</code></div>
+              <div className="code-line"><code>{"    "}<span className="syntax-string">"Data analytics"</span></code></div>
+              <div className="code-line"><code>{"  "}],</code></div>
+              <div className="code-line"><code>{"  "}mindset: <span className="syntax-string">"Problem solver"</span>,</code></div>
+              <div className="code-line"><code>{"  "}status: <span className="syntax-string">"Always learning"</span></code></div>
+              <div className="code-line"><code>{"};"}</code></div>
             </div>
-
-            <div className="grid grid-cols-3 border-t border-slate-800">
-              <div className="border-r border-slate-800 p-5 text-center">
-                <Braces className="mx-auto mb-2 text-cyan-400" size={22} />
-                <p className="text-xs text-slate-400">Development</p>
-              </div>
-
-              <div className="border-r border-slate-800 p-5 text-center">
-                <Database className="mx-auto mb-2 text-purple-400" size={22} />
-                <p className="text-xs text-slate-400">Data</p>
-              </div>
-
-              <div className="p-5 text-center">
-                <ChartColumn
-                  className="mx-auto mb-2 text-green-400"
-                  size={22}
-                />
-                <p className="text-xs text-slate-400">Analytics</p>
-              </div>
-            </div>
+            <div className="editor-status"><span className="flex items-center gap-1.5"><GitBranch size={12} />main</span><span>JavaScript · UTF-8</span></div>
           </div>
-        </motion.div>
+          <p className="mt-5 text-center font-mono text-[10px] text-slate-400">Where engineering meets curiosity.</p>
+        </Reveal>
+      </div>
+      <div className="container-shell hero-footnote">
+        <span className="mr-auto text-slate-300">Built with purpose. Driven by curiosity.</span>
+        <span className="flex items-center gap-2"><Braces size={14} />Development</span>
+        <span className="flex items-center gap-2"><Database size={14} />Data</span>
+        <span className="flex items-center gap-2"><ChartColumn size={14} />Analytics</span>
       </div>
     </section>
-  );
+  )
 }
-
 export default Hero
