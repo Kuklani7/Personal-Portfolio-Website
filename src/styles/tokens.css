@@ -1,5 +1,4 @@
-/* Edit these tokens to change the shared visual identity.
-   The existing 3D scene keeps its own small, isolated palette for a later phase. */
+/* Central semantic palette. Light values preserve the existing visual identity. */
 :root {
   --background: #faf8f4;
   --surface: #ffffff;
@@ -14,12 +13,26 @@
   --warm: #ff865e;
   --warm-soft: #ffe9df;
   --warm-ink: #9c4225;
+  --teal: #17786f;
+  --teal-soft: #e8f4f0;
   --on-accent: #ffffff;
   --border: #c9ced8;
   --border-strong: #19233c;
   --success: #256143;
   --success-soft: #eaf5ed;
   --ambient-color: #355cff08;
+  --ambient-inner: color-mix(in srgb, var(--accent) 13%, transparent);
+  --ambient-outer: transparent;
+  --ambient-warm: color-mix(in srgb, var(--warm) 7%, transparent);
+  --wash-blue: color-mix(in srgb, var(--accent) 12%, transparent);
+  --wash-warm: color-mix(in srgb, var(--warm) 12%, transparent);
+  --spotlight-strength: 16%;
+  --spotlight-halo: transparent;
+  --name-highlight: color-mix(in srgb, var(--accent) 74%, var(--surface));
+  --name-base: var(--accent);
+  --celestial-icon: #a56200;
+  --celestial-hover: #ffe9df;
+  --focus: var(--accent);
 
   --radius-card: 14px;
   --radius-control: 7px;
@@ -40,6 +53,62 @@
   --scene-string: #91d8b7;
   --scene-name: #80ceef;
 }
+
+:root[data-theme="dark"] {
+  --background: #1c1729;
+  --surface: #2a223d;
+  --surface-muted: #241d34;
+  --text: #fff7f2;
+  --muted: #bfb3cf;
+  --muted-on-tint: #c5b9d5;
+  --muted-on-lit-surface: #d8cde3;
+  --accent: #b5a0ff;
+  --accent-hover: #c9b9ff;
+  --accent-ink: #c4b2ff;
+  --accent-soft: #382b54;
+  --warm: #ff9b80;
+  --warm-soft: #432c36;
+  --warm-ink: #ffb399;
+  --teal: #91d8ca;
+  --teal-soft: #223f40;
+  --on-accent: #20182f;
+  --border: #51445f;
+  --border-strong: #b3a2cc;
+  --success: #9fd8b4;
+  --success-soft: #243a32;
+  --ambient-color: #b5a0ff12;
+  --ambient-inner: #b5a0ff3d;
+  --ambient-outer: #9273e814;
+  --ambient-warm: #ff9b8017;
+  --wash-blue: #b5a0ff26;
+  --wash-warm: #ff9b801c;
+  --spotlight-strength: 28%;
+  --spotlight-halo: #b5a0ff0d;
+  --name-highlight: #e2d7ff;
+  --celestial-icon: #c4b2ff;
+  --celestial-hover: #382b54;
+  --focus: #c4b2ff;
+  --scene-background: #1c1729;
+  --scene-surface: #2a223d;
+  --scene-text: #fff7f2;
+  --scene-muted: #c5b9d5;
+  --scene-border: #51445f;
+  --scene-accent: #b5a0ff;
+  --scene-keyword: #c4b2ff;
+  --scene-string: #91d8ca;
+  --scene-name: #ffb399;
+}
+
+/* Typed colors let the existing radial gradients blend during a theme change. */
+@property --ambient-inner { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --ambient-outer { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --ambient-warm { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --wash-blue { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --wash-warm { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --name-highlight { syntax: "<color>"; inherits: true; initial-value: #355cff; }
+@property --name-base { syntax: "<color>"; inherits: true; initial-value: #355cff; }
+@property --spotlight-strength { syntax: "<percentage>"; inherits: true; initial-value: 16%; }
+@property --spotlight-halo { syntax: "<color>"; inherits: true; initial-value: transparent; }
 
 @theme inline {
   --color-paper: var(--background);

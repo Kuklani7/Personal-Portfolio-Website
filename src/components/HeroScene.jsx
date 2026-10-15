@@ -2,8 +2,10 @@ import { useEffect, useRef } from "react"
 import { Canvas, useFrame, useThree } from "@react-three/fiber"
 import { MathUtils } from "three"
 import HeroFallback from "./HeroFallback"
+import useTheme from "../hooks/useTheme"
+import { scenePalette } from "../theme/scenePalette"
 
-function Knot({ pointer }) {
+function Knot({ pointer, color }) {
   const tilt = useRef(null)
   const shape = useRef(null)
   const time = useRef(0)
@@ -19,7 +21,7 @@ function Knot({ pointer }) {
     <group ref={tilt}>
       <mesh ref={shape} rotation={[0.45, 0.25, -0.2]}>
         <torusKnotGeometry args={[0.95, 0.25, 160, 20, 2, 3]} />
-        <meshStandardMaterial color="#a6b8f4" metalness={0.36} roughness={0.25} />
+        <meshStandardMaterial color={color} metalness={0.36} roughness={0.25} />
       </mesh>
     </group>
   )
@@ -37,16 +39,18 @@ function ContextGuard({ onFailure }) {
 }
 
 export default function HeroScene({ active, pointer, onReady, onFailure }) {
+  const { theme } = useTheme()
+  const palette = scenePalette[theme]
   return (
     <Canvas camera={{ position: [0, 0, 6.2], fov: 38 }} dpr={[1, 1.5]}
       gl={{ antialias: true, alpha: true, powerPreference: "low-power", stencil: false }}
-      frameloop={active ? "always" : "never"} fallback={<HeroFallback />}
+      frameloop={active ? "always" : "demand"} fallback={<HeroFallback />}
       onCreated={onReady} style={{ pointerEvents: "none" }}>
       <ambientLight intensity={1.1} />
-      <directionalLight position={[3, 4, 4]} color="#ffffff" intensity={3} />
-      <directionalLight position={[-3, -1, 2]} color="#355cff" intensity={1.8} />
-      <pointLight position={[2, -2, -2]} color="#ffb390" intensity={12} distance={10} decay={2} />
-      <Knot pointer={pointer} />
+      <directionalLight position={[3, 4, 4]} color={palette.key} intensity={3} />
+      <directionalLight position={[-3, -1, 2]} color={palette.fill} intensity={1.8} />
+      <pointLight position={[2, -2, -2]} color={palette.rim} intensity={12} distance={10} decay={2} />
+      <Knot pointer={pointer} color={palette.material} />
       <ContextGuard onFailure={onFailure} />
     </Canvas>
   )

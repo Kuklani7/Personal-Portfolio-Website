@@ -1,0 +1,44 @@
+/* The navbar keeps a single toggle visible in both desktop and mobile layouts. */
+.navbar-actions { display: flex; align-items: center; gap: 14px; }
+.theme-toggle { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; flex-shrink: 0; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--celestial-icon); transition: background-color 180ms ease, color 350ms ease; }
+.theme-toggle:hover { background: var(--celestial-hover); }
+.theme-toggle:focus-visible, :focus-visible { outline-color: var(--focus); }
+.theme-toggle svg { flex-shrink: 0; overflow: visible; }
+
+/* Activate only during theme changes. Never transition layout or every property. */
+html.theme-transition {
+  transition: background-color 350ms ease, color 350ms ease, --ambient-inner 350ms ease,
+    --ambient-outer 350ms ease, --ambient-warm 350ms ease,
+    --wash-blue 350ms ease, --wash-warm 350ms ease, --name-highlight 350ms ease, --name-base 350ms ease,
+    --spotlight-strength 350ms ease, --spotlight-halo 350ms ease;
+}
+.theme-transition :where(body, .site-shell, .site-header, .mobile-nav, .brand-mark,
+  .nav-link, .button, .home-resume, .social-link, .section, .pointer-surface,
+  .badge, .project-arrow, .project-picker, .site-footer, .experience-entry,
+  .timeline, .timeline-item::before, .project-engineering, .project-detail-row,
+  .about-highlight, .skill-symbol, .scene-pause, h1, h2, h3, h4, p, li, a) {
+  transition-property: background-color, color, border-color, box-shadow;
+  transition-duration: 350ms;
+  transition-timing-function: ease;
+}
+
+:root[data-theme="dark"] .brand-mark { color: var(--on-accent); }
+:root[data-theme="dark"] .home-orbit { opacity: .5; }
+:root[data-theme="dark"] .hero-knot-fallback { filter: hue-rotate(20deg) brightness(1.15); }
+:root[data-theme="dark"] .refined-skill { box-shadow: 0 8px 28px #100c181a; }
+:root[data-theme="dark"] .pointer-surface { --muted: var(--muted-on-lit-surface); }
+:root[data-theme="dark"] .pointer-surface:hover { border-color: color-mix(in srgb, var(--project-accent, var(--accent)) 65%, var(--border)); }
+:root[data-theme="dark"] .experience-entry { transition: border-color 240ms ease; }
+:root[data-theme="dark"] .experience-entry:hover { border-bottom-color: var(--accent); }
+
+@media (max-width: 767px) {
+  .navbar-actions { gap: 8px; }
+}
+@media (max-width: 359px) {
+  .site-header .brand-link { gap: 7px; font-size: .8rem; }
+  .site-header .navbar-actions { gap: 2px; }
+  .site-header nav[aria-label="Main navigation"] { gap: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.theme-transition { transition: none; }
+}

@@ -1,7 +1,7 @@
 /* Homepage-only art direction. Shared Phase 1 components remain unchanged. */
 .hero-section.home-section {
   --muted: var(--muted-on-tint);
-  --home-pointer-light: color-mix(in srgb, var(--accent) 7%, transparent);
+  --home-pointer-light: var(--ambient-inner);
   position: relative;
   isolation: isolate;
   overflow: clip;
@@ -9,8 +9,8 @@
 }
 .hero-section.home-section::before { display: none; }
 .home-wash { position: absolute; z-index: -1; pointer-events: none; border-radius: 50%; filter: blur(28px); }
-.home-wash-blue { top: -60px; right: -8%; width: min(820px, 80vw); height: 620px; background: radial-gradient(ellipse, color-mix(in srgb, var(--accent) 12%, transparent), transparent 68%); }
-.home-wash-peach { top: 28%; left: -18%; width: min(780px, 90vw); height: 600px; background: radial-gradient(ellipse, color-mix(in srgb, var(--warm) 12%, transparent), transparent 70%); }
+.home-wash-blue { top: -60px; right: -8%; width: min(820px, 80vw); height: 620px; background: radial-gradient(ellipse, var(--wash-blue), transparent 68%); }
+.home-wash-peach { top: 28%; left: -18%; width: min(780px, 90vw); height: 600px; background: radial-gradient(ellipse, var(--wash-warm), transparent 70%); }
 .home-orbit { position: absolute; z-index: -1; top: 23%; right: 4%; width: clamp(180px, 24vw, 340px); height: auto; pointer-events: none; stroke: var(--warm); stroke-width: 0.8; opacity: 0.32; }
 .home-layout { position: relative; min-height: calc(100svh - 76px); padding-block: 54px 24px; }
 .home-intro { position: relative; z-index: 1; }

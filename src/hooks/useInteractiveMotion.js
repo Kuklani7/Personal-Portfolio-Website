@@ -1,6 +1,7 @@
 import { useSyncExternalStore } from "react"
 
-const query = "(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)"
+// Hybrid laptops may report touch as their primary pointer while a mouse is available.
+const query = "(any-hover: hover) and (any-pointer: fine) and (prefers-reduced-motion: no-preference)"
 
 function subscribe(callback) {
   const media = window.matchMedia(query)

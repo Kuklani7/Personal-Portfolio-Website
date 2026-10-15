@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import { ArrowUpRight, CodeXml, Menu, X } from "lucide-react"
 import { profile } from "../data/profile"
+import ThemeToggle from "./ThemeToggle"
 
 const links = [
   { name: "About", href: "#about" },
@@ -72,15 +73,18 @@ function Navbar() {
           <span className="brand-mark" aria-hidden="true"><CodeXml size={19} /></span>
           <span>{profile.name}<span className="brand-dot" aria-hidden="true">.</span></span>
         </a>
-        <div className="hidden items-center gap-1 md:flex lg:gap-3">
-          {links.map((link) => (
-            <a key={link.href} href={link.href} aria-current={activeSection === link.href.slice(1) ? "location" : undefined} className="nav-link">{link.name}</a>
-          ))}
-          <a href="#contact" aria-current={activeSection === "contact" ? "location" : undefined} className="button button-primary nav-contact ml-3">Contact Me <ArrowUpRight size={15} /></a>
+        <div className="navbar-actions">
+          <div className="hidden items-center gap-1 md:flex lg:gap-3">
+            {links.map((link) => (
+              <a key={link.href} href={link.href} aria-current={activeSection === link.href.slice(1) ? "location" : undefined} className="nav-link">{link.name}</a>
+            ))}
+            <a href="#contact" aria-current={activeSection === "contact" ? "location" : undefined} className="button button-primary nav-contact ml-3">Contact Me <ArrowUpRight size={15} /></a>
+          </div>
+          <ThemeToggle />
+          <button ref={menuButton} type="button" className="menu-toggle" onClick={() => setIsOpen((open) => !open)} aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={isOpen} aria-controls="mobile-navigation">
+            {isOpen ? <X size={21} /> : <Menu size={21} />}
+          </button>
         </div>
-        <button ref={menuButton} type="button" className="menu-toggle" onClick={() => setIsOpen((open) => !open)} aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={isOpen} aria-controls="mobile-navigation">
-          {isOpen ? <X size={21} /> : <Menu size={21} />}
-        </button>
       </nav>
       <nav id="mobile-navigation" aria-label="Mobile navigation" hidden={!isOpen} className="mobile-nav md:hidden">
         <div className="container-shell flex flex-col gap-1">

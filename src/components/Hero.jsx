@@ -4,6 +4,8 @@ import { motion, useReducedMotion } from "motion/react"
 import HeroIntro from "./HeroIntro"
 import AmbientHero from "./AmbientHero"
 import HeroVisual from "./HeroVisual"
+import InteractiveName from "./InteractiveName"
+import Magnetic from "./Magnetic"
 import { profile } from "../data/profile"
 import "../styles/home.css"
 
@@ -15,10 +17,7 @@ function Hero() {
       <div className="container-shell home-layout">
         <HeroIntro className="home-intro">
           <p className="home-kicker">SOFTWARE ENGINEERING <span>·</span> SYSTEMS <span>·</span> AI/ML</p>
-          <h1 id="hero-heading" className="home-name">
-            <span className="home-name-line">RACHIT</span>{" "}
-            <span className="home-name-line home-surname">KUKLANI</span>
-          </h1>
+          <InteractiveName />
           <div className="home-copy">
             <p className="home-tagline">Building intelligent software that solves real-world problems.</p>
             <p className="home-description">
@@ -27,16 +26,16 @@ function Hero() {
             </p>
           </div>
           <div className="home-actions">
-            <a href="#projects" className="button home-button home-primary">View Work <ArrowRight size={17} /></a>
-            <a href="#contact" className="button home-button home-secondary">Contact Me <ArrowUpRight size={16} /></a>
+            <Magnetic href="#projects" className="button home-button home-primary">View Work <ArrowRight size={17} /></Magnetic>
+            <Magnetic href="#contact" className="button home-button home-secondary">Contact Me <ArrowUpRight size={16} /></Magnetic>
             {profile.resumeUrl ? (
-              <a href={profile.resumeUrl} target="_blank" rel="noopener noreferrer" className="home-resume">
+              <Magnetic href={profile.resumeUrl} target="_blank" rel="noopener noreferrer" className="home-resume">
                 <FileText size={16} />Resume <ArrowUpRight size={14} /><span className="sr-only"> (opens in a new tab)</span>
-              </a>
+              </Magnetic>
             ) : (
-              <a href={`mailto:${profile.email}?subject=Resume%20request`} className="home-resume">
+              <Magnetic href={`mailto:${profile.email}?subject=Resume%20request`} className="home-resume">
                 <FileText size={16} />Request résumé <ArrowUpRight size={14} />
-              </a>
+              </Magnetic>
             )}
           </div>
           <div className="home-socials">
