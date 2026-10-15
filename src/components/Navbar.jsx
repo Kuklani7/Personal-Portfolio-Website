@@ -18,7 +18,7 @@ function Navbar() {
           <span className="rounded-lg bg-slate-900 p-2 text-white">
             <CodeXml size={20} />
           </span>
-          <span>Your Name</span>
+          <span> Rachit Kuklani</span>
         </a>
 
         <div className="hidden items-center gap-8 md:flex">

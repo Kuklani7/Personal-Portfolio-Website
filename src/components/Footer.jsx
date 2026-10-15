@@ -6,11 +6,11 @@ function Footer() {
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 sm:flex-row">
         <div className="flex items-center gap-2 font-semibold text-white">
           <CodeXml size={19} />
-          Your Name
+          Rachit Kuklani
         </div>
 
         <p className="text-sm">
-          © 2026 Your Name. Built with React.
+          © 2026 Rachit Kuklani. Built with React.
         </p>
 
         <a

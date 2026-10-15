@@ -1,10 +1,11 @@
-import { motion } from "motion/react"
-import { GitBranch, BriefcaseBusiness, Mail, Send } from "lucide-react"
+import { motion } from "motion/react";
+import { Mail, Send } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 function Contact() {
   const handleSubmit = (event) => {
-    event.preventDefault()
-  }
+    event.preventDefault();
+  };
 
   return (
     <section id="contact" className="bg-white py-24">
@@ -15,13 +16,12 @@ function Contact() {
           viewport={{ once: true }}
         >
           <p className="section-label">Let’s connect</p>
-          <h2 className="section-title">
-            Interested in working together?
-          </h2>
+          <h2 className="section-title">Interested in working together?</h2>
 
           <p className="mt-6 max-w-lg leading-8 text-slate-600">
-            This contact section will eventually include your real email,
-            BriefcaseBusiness profile, GitBranch profile, and a working message form.
+            I'm always open to discussing software engineering opportunities,
+            collaborating on projects, and connecting with fellow developers.
+            Feel free to reach out through email, LinkedIn, or GitHub.
           </p>
 
           <div className="mt-9 space-y-4">
@@ -29,28 +29,38 @@ function Contact() {
               <span className="rounded-lg bg-blue-100 p-3 text-blue-600">
                 <Mail size={20} />
               </span>
+
               <div>
                 <p className="text-sm text-slate-500">Email</p>
-                <p className="font-semibold">your.email@example.com</p>
+                <a
+                  href="mailto:kuklanir@gmail.com"
+                  className="font-semibold hover:text-blue-600"
+                >
+                  kuklanir@gmail.com
+                </a>
               </div>
             </div>
 
-            <div className="flex gap-3">
-              <button
-                type="button"
+            <div className="flex flex-wrap gap-3">
+              <a
+                href="https://www.linkedin.com/in/rachitkuklani/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 rounded-lg border border-slate-200 px-4 py-3 font-medium text-slate-700 transition hover:border-blue-300 hover:text-blue-600"
               >
-                <BriefcaseBusiness size={19} />
-                BriefcaseBusiness
-              </button>
+                <FaLinkedin size={19} />
+                LinkedIn
+              </a>
 
-              <button
-                type="button"
+              <a
+                href="https://github.com/kuklani7"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 rounded-lg border border-slate-200 px-4 py-3 font-medium text-slate-700 transition hover:border-blue-300 hover:text-blue-600"
               >
-                <GitBranch size={19} />
-                GitBranch
-              </button>
+                <FaGithub size={19} />
+                GitHub
+              </a>
             </div>
           </div>
         </motion.div>
@@ -110,7 +120,7 @@ function Contact() {
         </motion.form>
       </div>
     </section>
-  )
+  );
 }
 
-export default Contact
+export default Contact;

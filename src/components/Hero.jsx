@@ -30,15 +30,14 @@ function Hero() {
           </p>
 
           <h1 className="max-w-3xl text-5xl font-bold leading-tight tracking-tight text-slate-950 md:text-6xl">
-            Building software that turns{" "}
-            <span className="text-gradient">complex data</span> into useful
-            experiences.
+            Building <span className="text-gradient">intelligent software</span>{" "}
+            that solves real-world problems.
           </h1>
 
           <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600">
-            I am a developer and data professional who enjoys creating
-            responsive applications, reliable systems, and insightful
-            analytics.
+            I specialize in developing efficient applications, reliable systems,
+            and intelligent solutions, with a passion for solving complex
+            engineering challenges.
           </p>
 
           <div className="mt-9 flex flex-wrap gap-4">
@@ -108,10 +107,12 @@ function Hero() {
                 ,
               </p>
               <p className="pl-5">
-                mindset: <span className="text-green-300">"problem solver"</span>,
+                mindset:{" "}
+                <span className="text-green-300">"problem solver"</span>,
               </p>
               <p className="pl-5">
-                status: <span className="text-green-300">"always learning"</span>,
+                status:{" "}
+                <span className="text-green-300">"always learning"</span>,
               </p>
               <p>{"}"}</p>
             </div>
@@ -128,7 +129,10 @@ function Hero() {
               </div>
 
               <div className="p-5 text-center">
-                <ChartColumn className="mx-auto mb-2 text-green-400" size={22} />
+                <ChartColumn
+                  className="mx-auto mb-2 text-green-400"
+                  size={22}
+                />
                 <p className="text-xs text-slate-400">Analytics</p>
               </div>
             </div>
@@ -136,7 +140,7 @@ function Hero() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
 
 export default Hero
