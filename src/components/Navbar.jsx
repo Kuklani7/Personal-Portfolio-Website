@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import { ArrowUpRight, CodeXml, Menu, X } from "lucide-react"
-import { profile } from "../data/profile"
+import { ArrowUpRight, Menu, X } from "lucide-react"
 import ThemeToggle from "./ThemeToggle"
 
 const links = [
@@ -69,9 +68,8 @@ function Navbar() {
       if (!event.currentTarget.contains(event.relatedTarget)) setIsOpen(false)
     }}>
       <nav aria-label="Main navigation" className="container-shell flex h-[76px] items-center justify-between gap-4">
-        <a href="#home" onClick={() => setIsOpen(false)} className="brand-link">
-          <span className="brand-mark" aria-hidden="true"><CodeXml size={19} /></span>
-          <span>{profile.name}<span className="brand-dot" aria-hidden="true">.</span></span>
+        <a href="#home" onClick={() => setIsOpen(false)} className="brand-link" aria-label="Rachit Kuklani — Back to Home">
+          RK<span className="brand-dot" aria-hidden="true">.</span>
         </a>
         <div className="navbar-actions">
           <div className="hidden items-center gap-1 md:flex lg:gap-3">

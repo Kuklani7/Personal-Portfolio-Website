@@ -16,8 +16,9 @@
 .home-intro { position: relative; z-index: 1; }
 .home-kicker { margin: 0 0 25px; font-family: var(--font-mono); font-size: clamp(0.58rem, 1vw, 0.72rem); font-weight: 500; letter-spacing: 0.1em; line-height: 1.8; color: var(--muted); }
 .home-kicker span { color: var(--warm-ink); margin-inline: 3px; }
-.home-name { width: max-content; max-width: 100%; margin: 0 0 26px -0.065em; font-size: clamp(5rem, 14.4vw, 11.75rem); font-weight: 700; line-height: 0.88; letter-spacing: -0.075em; color: var(--text); }
-.home-name-line { display: block; padding-right: 0.075em; }
+/* Preserve the display scale; let the font's kerning balance each letter pair. */
+.home-name { width: max-content; max-width: 100%; margin: 0 0 26px -0.065em; font-size: clamp(5rem, 14.4vw, 11.75rem); font-weight: 700; font-kerning: normal; line-height: 0.98; letter-spacing: -0.015em; color: var(--text); }
+.home-name-line { display: block; padding-right: 0.015em; }
 .home-surname { color: var(--accent); background: linear-gradient(115deg, var(--accent) 25%, color-mix(in srgb, var(--accent) 74%, var(--surface)) 100%); background-clip: text; -webkit-text-fill-color: transparent; }
 .home-copy { max-width: 650px; }
 .home-tagline { max-width: 590px; margin: 0; font-family: var(--font-heading); font-size: clamp(1.15rem, 2vw, 1.55rem); font-weight: 500; line-height: 1.4; letter-spacing: -0.025em; color: var(--text); text-wrap: pretty; }
@@ -61,7 +62,8 @@
   .home-layout { padding-top: 34px; }
   .home-kicker { font-size: clamp(0.6rem, 1.95vw, 0.7rem); letter-spacing: 0.045em; margin-bottom: 26px; }
   .home-kicker span { margin-inline: 0; }
-  .home-name { font-size: clamp(3.8rem, 20.5vw, 9rem); margin-bottom: 28px; line-height: 0.92; letter-spacing: -0.07em; }
+  .home-name { font-size: clamp(3.8rem, 20.5vw, 9rem); margin-bottom: 28px; letter-spacing: 0; }
+  .home-name-line { padding-right: 0; }
   .home-tagline { max-width: 520px; font-size: clamp(1.15rem, 3.6vw, 1.45rem); }
   .home-description { font-size: 0.9rem; max-width: 520px; }
   .home-actions { gap: 8px 10px; margin-top: 20px; }

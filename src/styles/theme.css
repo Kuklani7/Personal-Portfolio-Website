@@ -12,7 +12,7 @@ html.theme-transition {
     --wash-blue 350ms ease, --wash-warm 350ms ease, --name-highlight 350ms ease, --name-base 350ms ease,
     --spotlight-strength 350ms ease, --spotlight-halo 350ms ease;
 }
-.theme-transition :where(body, .site-shell, .site-header, .mobile-nav, .brand-mark,
+.theme-transition :where(body, .site-shell, .site-header, .mobile-nav,
   .nav-link, .button, .home-resume, .social-link, .section, .pointer-surface,
   .badge, .project-arrow, .project-picker, .site-footer, .experience-entry,
   .timeline, .timeline-item::before, .project-engineering, .project-detail-row,
@@ -22,7 +22,7 @@ html.theme-transition {
   transition-timing-function: ease;
 }
 
-:root[data-theme="dark"] .brand-mark { color: var(--on-accent); }
+:root[data-theme="dark"] .brand-dot { color: var(--warm); }
 :root[data-theme="dark"] .home-orbit { opacity: .5; }
 :root[data-theme="dark"] .hero-knot-fallback { filter: hue-rotate(20deg) brightness(1.15); }
 :root[data-theme="dark"] .refined-skill { box-shadow: 0 8px 28px #100c181a; }
@@ -35,7 +35,6 @@ html.theme-transition {
   .navbar-actions { gap: 8px; }
 }
 @media (max-width: 359px) {
-  .site-header .brand-link { gap: 7px; font-size: .8rem; }
   .site-header .navbar-actions { gap: 2px; }
   .site-header nav[aria-label="Main navigation"] { gap: 8px; }
 }
