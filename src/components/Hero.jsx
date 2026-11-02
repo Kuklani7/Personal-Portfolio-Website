@@ -1,17 +1,17 @@
 import { ArrowDown, ArrowRight, ArrowUpRight, FileText } from "lucide-react"
 import { FaGithub, FaLinkedin } from "react-icons/fa"
-import { motion, useReducedMotion } from "motion/react"
 import HeroIntro from "./HeroIntro"
 import AmbientHero from "./AmbientHero"
-import HeroVisual from "./HeroVisual"
+import InteractiveTerminal from "./InteractiveTerminal"
 import InteractiveName from "./InteractiveName"
 import Magnetic from "./Magnetic"
 import { profile } from "../data/profile"
+import { motion } from "motion/react"
+import Reveal from "./Reveal"
+import { heroCopy } from "../motion/presets"
 import "../styles/home.css"
 
 function Hero() {
-  const reduced = useReducedMotion()
-
   return (
     <AmbientHero>
       <div className="container-shell home-layout">
@@ -19,18 +19,18 @@ function Hero() {
           <p className="home-kicker">SOFTWARE ENGINEERING <span>·</span> SYSTEMS <span>·</span> AI/ML</p>
           <InteractiveName />
           <div className="home-copy">
-            <p className="home-tagline">Building intelligent software that solves real-world problems.</p>
-            <p className="home-description">
+            <motion.p className="home-tagline" custom={0} variants={heroCopy}>Building intelligent software that solves real-world problems.</motion.p>
+            <motion.p className="home-description" custom={1} variants={heroCopy}>
               I'm a Computer Science student at the University at Buffalo, interested
               in software engineering, systems programming, automation, and intelligent applications.
-            </p>
+            </motion.p>
           </div>
           <div className="home-actions">
             <Magnetic href="#projects" className="button home-button home-primary">View Work <ArrowRight size={17} /></Magnetic>
             <Magnetic href="#contact" className="button home-button home-secondary">Contact Me <ArrowUpRight size={16} /></Magnetic>
             {profile.resumeUrl ? (
               <Magnetic href={profile.resumeUrl} target="_blank" rel="noopener noreferrer" className="home-resume">
-                <FileText size={16} />Resume <ArrowUpRight size={14} /><span className="sr-only"> (opens in a new tab)</span>
+                <FileText size={16} />View résumé <ArrowUpRight size={14} /><span className="sr-only"> (opens in a new tab)</span>
               </Magnetic>
             ) : (
               <Magnetic href={`mailto:${profile.email}?subject=Resume%20request`} className="home-resume">
@@ -48,13 +48,9 @@ function Hero() {
           </div>
         </HeroIntro>
 
-        <motion.div className="home-sculpture"
-          initial={reduced ? false : { opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: reduced ? 0 : 0.5, delay: reduced ? 0 : 0.12 }}>
-          <HeroVisual />
-          <p className="home-sculpture-caption">A little curiosity, in motion.</p>
-        </motion.div>
+        <Reveal className="home-terminal" onMount delay={0.2}>
+          <InteractiveTerminal />
+        </Reveal>
 
         <div className="home-bottomline">
           <p className="home-availability"><span />Available for new opportunities</p>

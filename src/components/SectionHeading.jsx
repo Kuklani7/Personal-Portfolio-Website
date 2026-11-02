@@ -1,12 +1,18 @@
-import { motion, useReducedMotion } from "motion/react"
+import { useContext } from "react"
+import { motion } from "motion/react"
+import { RevealContext } from "../motion/RevealContext"
+import useEntrance from "../hooks/useEntrance"
+import { fadeUp } from "../motion/presets"
 
 export default function SectionHeading({ children, id, className = "section-title" }) {
-  const reduced = useReducedMotion()
+  const grouped = useContext(RevealContext)
+  return grouped ? <h2 id={id} className={className}>{children}</h2> : <AnimatedHeading id={id} className={className}>{children}</AnimatedHeading>
+}
+
+function AnimatedHeading({ children, id, className }) {
+  const { ref, controls } = useEntrance({ amount: 0.2 })
   return (
-    <motion.h2 id={id} className={className}
-      initial={reduced ? false : { opacity: 0, y: 8 }}
-      whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.32, ease: "easeOut" }}>
+    <motion.h2 ref={ref} id={id} className={className} initial={false} animate={controls} variants={fadeUp}>
       {children}
     </motion.h2>
   )

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react"
 import { useMotionValue, useSpring, useTransform } from "motion/react"
 import useInteractiveMotion from "./useInteractiveMotion"
+import { springs } from "../motion/presets"
 
 export default function usePointerField({ initialX = 50, initialY = 50, enabled = true } = {}) {
   const ref = useRef(null)
@@ -8,9 +9,9 @@ export default function usePointerField({ initialX = 50, initialY = 50, enabled 
   const interactive = allowed && enabled
   const x = useMotionValue(initialX)
   const y = useMotionValue(initialY)
-  const smoothX = useSpring(x, { stiffness: 110, damping: 27 })
-  const smoothY = useSpring(y, { stiffness: 110, damping: 27 })
-  const opacity = useSpring(0, { stiffness: 100, damping: 25 })
+  const smoothX = useSpring(x, springs.pointer)
+  const smoothY = useSpring(y, springs.pointer)
+  const opacity = useSpring(0, springs.glow)
   const offsetX = useTransform(smoothX, [0, 100], [-1, 1])
   const offsetY = useTransform(smoothY, [0, 100], [-1, 1])
 

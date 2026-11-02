@@ -1,0 +1,71 @@
+/* A small portfolio application, using the existing semantic theme palette. */
+.developer-terminal {
+  --muted: var(--muted-on-tint);
+  --terminal-surface: color-mix(in srgb, var(--surface) 96%, var(--background));
+  --terminal-control-close: #de8c7c;
+  --terminal-control-minimize: #d8b268;
+  --terminal-control-maximize: #77ac92;
+  display: flex; flex-direction: column; width: 100%; height: 492px;
+  overflow: hidden; border: 1px solid var(--border); border-radius: 18px;
+  background: var(--terminal-surface); color: var(--text);
+  box-shadow: 0 18px 55px -28px color-mix(in srgb, var(--text) 24%, transparent);
+  font-family: var(--font-mono); font-size: 12px; line-height: 1.85;
+  transition: background-color var(--duration-theme) ease, color var(--duration-theme) ease, border-color var(--duration-hover) ease, box-shadow var(--duration-hover) ease, translate var(--duration-hover) ease;
+}
+.terminal-titlebar { display: flex; align-items: center; justify-content: space-between; gap: 14px; min-height: 50px; padding: 0 19px; border-bottom: 1px solid var(--border); background: color-mix(in srgb, var(--surface-muted) 50%, transparent); }
+.terminal-titlebar h2 { margin: 0; font-family: var(--font-mono); font-size: 11px; font-weight: 400; letter-spacing: -.02em; color: var(--muted); }
+.terminal-window-dots { display: flex; gap: 6px; }
+.terminal-window-dots span { width: 9px; height: 9px; border-radius: 50%; background: var(--terminal-control-close); }
+.terminal-window-dots span:nth-child(2) { background: var(--terminal-control-minimize); }
+.terminal-window-dots span:nth-child(3) { background: var(--terminal-control-maximize); }
+.terminal-header-icon { color: var(--muted); }
+.terminal-output { flex: 1; min-height: 0; padding: 20px; overflow-y: auto; overscroll-behavior-y: contain; scrollbar-width: thin; scrollbar-color: var(--border) transparent; overflow-wrap: anywhere; }
+.terminal-output:focus-visible { outline-offset: -4px; }
+.terminal-entry + .terminal-entry { margin-top: 22px; }
+.terminal-echo { display: flex; gap: 11px; margin-bottom: 10px; color: var(--text); white-space: pre-wrap; overflow-wrap: anywhere; }
+.terminal-echo > span:first-child { color: var(--accent-ink); }
+.terminal-line { white-space: pre-wrap; }
+.terminal-line + .terminal-line { margin-top: 5px; }
+.terminal-tone-heading { margin-top: 3px; color: var(--text); font-weight: 500; font-size: 13px; }
+.terminal-tone-label { color: var(--accent-ink); font-weight: 500; margin-top: 12px; }
+.terminal-tone-info { color: var(--muted); }
+.terminal-tone-accent { color: var(--warm-ink); }
+.terminal-tone-success { color: var(--success); }
+.terminal-tone-error { color: var(--warm-ink); }
+.terminal-help-line { display: grid; grid-template-columns: 126px minmax(0, 1fr); gap: 10px; }
+.terminal-command-name { color: var(--accent-ink); font-weight: 500; }
+.terminal-line a { display: inline-flex; align-items: baseline; gap: 5px; max-width: 100%; color: var(--accent-ink); text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--accent-ink) 40%, transparent); text-underline-offset: 3px; }
+.terminal-line a:hover { text-decoration-color: currentColor; }
+.terminal-line a svg { flex-shrink: 0; }
+.terminal-form { padding: 0 15px; }
+.terminal-input-row { display: flex; align-items: center; gap: 10px; min-height: 48px; padding-left: 9px; border: 1px solid var(--border); border-radius: 9px; background: color-mix(in srgb, var(--surface) 90%, transparent); transition: border-color var(--duration-fast) ease, background-color var(--duration-theme) ease; }
+.terminal-input-row:focus-within { border-color: var(--focus); box-shadow: 0 0 0 2px color-mix(in srgb, var(--focus) 13%, transparent); }
+.terminal-prompt { flex-shrink: 0; color: var(--muted); }
+.terminal-prompt span { padding-left: 4px; color: var(--accent-ink); }
+.terminal-input-row input { flex: 1; width: 0; min-width: 0; padding: 10px 0; border: 0; outline: none; background: transparent; color: var(--text); font: inherit; caret-color: var(--accent); }
+.terminal-input-row input::placeholder { color: var(--muted); opacity: 1; }
+.terminal-submit { display: inline-flex; flex-shrink: 0; width: 44px; height: 44px; align-items: center; justify-content: center; border-radius: 7px; color: var(--accent-ink); }
+.terminal-submit:hover { background: var(--accent-soft); }
+.terminal-quick-commands { display: flex; align-items: center; flex-wrap: wrap; gap: 5px; min-height: 46px; padding: 5px 18px; }
+.terminal-quick-commands > span { margin-right: 5px; color: var(--muted); font-size: 10px; }
+.terminal-quick-commands button { display: inline-flex; align-items: center; gap: 5px; min-height: 32px; padding: 4px 8px; border-radius: 6px; color: var(--accent-ink); font-size: 10px; }
+.terminal-quick-commands button:hover { background: var(--accent-soft); }
+.terminal-status { display: flex; justify-content: space-between; gap: 10px; min-height: 32px; padding: 8px 18px; border-top: 1px solid var(--border); color: var(--muted); font-size: 9px; line-height: 1.6; }
+.terminal-status > span:first-child { display: inline-flex; align-items: center; gap: 7px; letter-spacing: .04em; }
+.terminal-status i { width: 5px; height: 5px; border-radius: 50%; background: var(--success); }
+:root[data-theme="dark"] .developer-terminal { --terminal-surface: var(--surface-muted); box-shadow: 0 18px 60px -26px color-mix(in srgb, var(--accent) 20%, transparent); }
+.theme-transition :where(.terminal-titlebar, .terminal-input-row, .terminal-status, .terminal-quick-commands button) { transition: background-color var(--duration-theme) ease, border-color var(--duration-theme) ease, color var(--duration-theme) ease; }
+@media (any-hover: hover) and (any-pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .developer-terminal:hover { border-color: color-mix(in srgb, var(--accent-ink) 55%, var(--border)); box-shadow: 0 22px 65px -25px color-mix(in srgb, var(--accent) 20%, transparent); }
+  .developer-terminal:hover:not(:focus-within) { translate: 0 -2px; }
+}
+@media (max-width: 767px) {
+  .developer-terminal { height: 465px; }
+  .terminal-titlebar { padding-inline: 14px; gap: 8px; }
+  .terminal-titlebar h2 { font-size: 10px; }
+  .terminal-output { padding: 16px; font-size: 11px; }
+  .terminal-help-line { grid-template-columns: minmax(0, 1fr); gap: 0; margin-bottom: 8px; }
+  .terminal-form { padding-inline: 10px; }
+  .terminal-status { flex-wrap: wrap; padding-inline: 14px; font-size: 8px; }
+  .terminal-quick-commands { padding-inline: 12px; }
+}

@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 import { ThemeContext } from "./ThemeContext"
+import { duration } from "../motion/presets"
 
 const storageKey = "portfolio-theme"
 const systemQuery = "(prefers-color-scheme: dark)"
@@ -17,7 +18,7 @@ export default function ThemeProvider({ children }) {
     clearTimeout(transitionTimer.current)
     if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       root.classList.add("theme-transition")
-      transitionTimer.current = window.setTimeout(() => root.classList.remove("theme-transition"), 450)
+      transitionTimer.current = window.setTimeout(() => root.classList.remove("theme-transition"), duration.theme * 1000 + 100)
     } else root.classList.remove("theme-transition")
     root.dataset.theme = theme
     root.dataset.themePreference = preference

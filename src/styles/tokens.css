@@ -41,17 +41,14 @@
   --shadow-warm: 4px 4px 0 var(--warm);
   --duration-fast: 180ms;
   --duration-normal: 240ms;
+  --duration-hover: 260ms;
+  --duration-section: 560ms;
+  --duration-theme: 350ms;
+  --duration-ambient-blue: 19s;
+  --duration-ambient-peach: 23s;
+  --ease-motion: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-ui: cubic-bezier(0.2, 0.65, 0.3, 1);
 
-  --scene-background: #0e1627;
-  --scene-surface: #151e32;
-  --scene-text: #c2d0e5;
-  --scene-muted: #93a7c4;
-  --scene-border: #334769;
-  --scene-accent: #82b4ff;
-  --scene-keyword: #b4a0f6;
-  --scene-string: #91d8b7;
-  --scene-name: #80ceef;
 }
 
 :root[data-theme="dark"] {
@@ -88,15 +85,6 @@
   --celestial-icon: #c4b2ff;
   --celestial-hover: #382b54;
   --focus: #c4b2ff;
-  --scene-background: #1c1729;
-  --scene-surface: #2a223d;
-  --scene-text: #fff7f2;
-  --scene-muted: #c5b9d5;
-  --scene-border: #51445f;
-  --scene-accent: #b5a0ff;
-  --scene-keyword: #c4b2ff;
-  --scene-string: #91d8ca;
-  --scene-name: #ffb399;
 }
 
 /* Typed colors let the existing radial gradients blend during a theme change. */

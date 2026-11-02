@@ -1,11 +1,14 @@
 import { useEffect, useRef, useState } from "react"
-import { useReducedMotion } from "motion/react"
+import { motion, useReducedMotion } from "motion/react"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 import SectionHeading from "./SectionHeading"
 import Reveal from "./Reveal"
 import Magnetic from "./Magnetic"
 import ProjectShowcase from "./ProjectShowcase"
 import { projects } from "../data/projects"
+import { fadeUp } from "../motion/presets"
+
+const accents = { cobalt: "var(--accent-ink)", teal: "var(--teal)", orange: "var(--warm-ink)" }
 
 export default function Projects() {
   const [active, setActive] = useState(0)
@@ -58,12 +61,12 @@ export default function Projects() {
   return (
     <section id="projects" aria-labelledby="projects-heading" className="section refined-section projects-section">
       <div className="container-shell">
-        <Reveal className="editorial-heading">
-          <div><p className="section-label">04 / Selected engineering</p><SectionHeading id="projects-heading" className="section-title">A closer look<br />at the work<span className="text-accent">.</span></SectionHeading></div>
-          <p className="section-intro">The ideas, tools, and thinking behind the build. Explore one project at a time.</p>
+        <Reveal className="editorial-heading" sequence>
+          <motion.div variants={fadeUp}><p className="section-label">04 / Selected engineering</p><SectionHeading id="projects-heading" className="section-title">A closer look<br />at the work<span className="text-accent">.</span></SectionHeading></motion.div>
+          <motion.p variants={fadeUp} className="section-intro">The ideas, tools, and thinking behind the build. Explore one project at a time.</motion.p>
         </Reveal>
         {projects.some((project) => project.draft) && <p className="draft-note">Draft entries retained from the current portfolio. Implementation details and outcomes are included only when documented.</p>}
-        <div className="project-carousel" role="region" aria-roledescription="carousel" aria-label="Featured engineering projects" aria-describedby="project-instructions">
+        <Reveal className="project-carousel" style={{ "--showcase-accent": accents[projects[active].accent] }} role="region" aria-roledescription="carousel" aria-label="Featured engineering projects" aria-describedby="project-instructions">
           <div className="project-toolbar">
             <p className="project-counter" aria-hidden="true">{String(active + 1).padStart(2, "0")}<span> / {String(projects.length).padStart(2, "0")}</span></p>
             <div className="project-navigation">
@@ -74,7 +77,7 @@ export default function Projects() {
           <div ref={track} id="project-track" className="project-track" tabIndex={0} role="group" aria-label="Project showcases" aria-describedby="project-instructions" aria-keyshortcuts="ArrowLeft ArrowRight Home End" onKeyDown={keyDown}>
             {projects.map((project, index) => (
               <div key={project.id} className="project-slide" role="group" aria-roledescription="slide" aria-label={`${index + 1} of ${projects.length}: ${project.title}`} aria-hidden={index !== active} inert={index !== active}>
-                <ProjectShowcase project={project} index={index} />
+                <ProjectShowcase project={project} index={index} active={index === active} />
               </div>
             ))}
           </div>
@@ -85,7 +88,7 @@ export default function Projects() {
             ))}</div>
           </div>
           <p className="sr-only" role="status" aria-live="polite" aria-atomic="true">Project {active + 1} of {projects.length}: {projects[active].title}</p>
-        </div>
+        </Reveal>
       </div>
     </section>
   )

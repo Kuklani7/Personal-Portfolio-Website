@@ -1,13 +1,14 @@
 import { useId } from "react"
 import { motion, useReducedMotion } from "motion/react"
 import useTheme from "../hooks/useTheme"
+import { duration, ease } from "../motion/presets"
 
 export default function ThemeToggle() {
   const { theme, toggleTheme } = useTheme()
   const reduced = useReducedMotion()
   const maskId = useId()
   const dark = theme === "dark"
-  const transition = { duration: reduced ? 0 : 0.36, ease: "easeInOut" }
+  const transition = { duration: reduced ? 0 : duration.theme, ease: ease.soft }
   return (
     <motion.button type="button" className="theme-toggle" onClick={toggleTheme}
       aria-label={`Switch to ${dark ? "light" : "dark"} mode`}

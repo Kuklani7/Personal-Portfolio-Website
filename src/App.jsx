@@ -9,6 +9,7 @@ import Footer from "./components/Footer"
 import { MotionConfig } from "motion/react"
 import "./styles/refinements.css"
 import "./styles/theme.css"
+import "./styles/motion.css"
 
 function App() {
   return (

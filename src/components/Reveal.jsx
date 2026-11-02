@@ -1,18 +1,19 @@
-import { motion, useReducedMotion } from "motion/react"
+import { motion } from "motion/react"
+import useEntrance from "../hooks/useEntrance"
+import { RevealContext } from "../motion/RevealContext"
+import { fadeUp, stagger } from "../motion/presets"
 
-export default function Reveal({ children, className = "", as = "div", delay = 0 }) {
-  const reducedMotion = useReducedMotion()
-  const Component = as === "article" ? motion.article : motion.div
+export default function Reveal({ children, className = "", as = "div", delay = 0, sequence = false, onMount = false, ...props }) {
+  const { ref, controls, finish } = useEntrance({ onMount })
+  const Component = as === "article" ? motion.article : as === "ul" ? motion.ul : motion.div
 
   return (
-    <Component
+    <RevealContext.Provider value={true}><Component {...props} ref={ref}
       className={className}
-      initial={reducedMotion ? false : { opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.08 }}
-      transition={{ duration: reducedMotion ? 0 : 0.35, delay: reducedMotion ? 0 : Math.min(delay, 0.12), ease: "easeOut" }}
+      initial={false} animate={controls} variants={sequence ? stagger : fadeUp} custom={delay}
+      onFocusCapture={finish}
     >
       {children}
-    </Component>
+    </Component></RevealContext.Provider>
   )
 }

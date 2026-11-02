@@ -1,18 +1,14 @@
 import { Children } from "react"
-import { motion, useReducedMotion } from "motion/react"
-
-const container = { visible: { transition: { staggerChildren: 0.055 } } }
-const item = {
-  hidden: { opacity: 0, y: 10 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.35, ease: "easeOut" } },
-}
+import { motion } from "motion/react"
+import useEntrance from "../hooks/useEntrance"
+import { heroStage, stagger } from "../motion/presets"
 
 export default function HeroIntro({ children, className = "" }) {
-  const reduced = useReducedMotion()
+  const { ref, controls, finish } = useEntrance({ onMount: true })
   return (
-    <motion.div className={className} initial={reduced ? false : "hidden"} animate="visible" variants={reduced ? undefined : container}>
+    <motion.div ref={ref} className={className} initial={false} animate={controls} variants={stagger} onFocusCapture={finish}>
       {Children.toArray(children).map((child, index) => (
-        <motion.div key={child.key ?? index} variants={reduced ? undefined : item}>{child}</motion.div>
+        <motion.div key={child.key ?? index} custom={index} variants={index === 1 || index === 2 ? undefined : heroStage}>{child}</motion.div>
       ))}
     </motion.div>
   )

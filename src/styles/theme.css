@@ -1,30 +1,28 @@
 /* The navbar keeps a single toggle visible in both desktop and mobile layouts. */
 .navbar-actions { display: flex; align-items: center; gap: 14px; }
-.theme-toggle { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; flex-shrink: 0; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--celestial-icon); transition: background-color 180ms ease, color 350ms ease; }
+.theme-toggle { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; flex-shrink: 0; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--celestial-icon); transition: background-color 180ms ease, color var(--duration-theme) ease; }
 .theme-toggle:hover { background: var(--celestial-hover); }
 .theme-toggle:focus-visible, :focus-visible { outline-color: var(--focus); }
 .theme-toggle svg { flex-shrink: 0; overflow: visible; }
 
 /* Activate only during theme changes. Never transition layout or every property. */
 html.theme-transition {
-  transition: background-color 350ms ease, color 350ms ease, --ambient-inner 350ms ease,
-    --ambient-outer 350ms ease, --ambient-warm 350ms ease,
-    --wash-blue 350ms ease, --wash-warm 350ms ease, --name-highlight 350ms ease, --name-base 350ms ease,
-    --spotlight-strength 350ms ease, --spotlight-halo 350ms ease;
+  transition: background-color var(--duration-theme) ease, color var(--duration-theme) ease, --ambient-inner var(--duration-theme) ease,
+    --ambient-outer var(--duration-theme) ease, --ambient-warm var(--duration-theme) ease,
+    --wash-blue var(--duration-theme) ease, --wash-warm var(--duration-theme) ease, --name-highlight var(--duration-theme) ease, --name-base var(--duration-theme) ease,
+    --spotlight-strength var(--duration-theme) ease, --spotlight-halo var(--duration-theme) ease;
 }
 .theme-transition :where(body, .site-shell, .site-header, .mobile-nav,
   .nav-link, .button, .home-resume, .social-link, .section, .pointer-surface,
   .badge, .project-arrow, .project-picker, .site-footer, .experience-entry,
   .timeline, .timeline-item::before, .project-engineering, .project-detail-row,
-  .about-highlight, .skill-symbol, .scene-pause, h1, h2, h3, h4, p, li, a) {
+  .about-highlight, .skill-symbol, h1, h2, h3, h4, p, li, a) {
   transition-property: background-color, color, border-color, box-shadow;
-  transition-duration: 350ms;
+  transition-duration: var(--duration-theme);
   transition-timing-function: ease;
 }
 
 :root[data-theme="dark"] .brand-dot { color: var(--warm); }
-:root[data-theme="dark"] .home-orbit { opacity: .5; }
-:root[data-theme="dark"] .hero-knot-fallback { filter: hue-rotate(20deg) brightness(1.15); }
 :root[data-theme="dark"] .refined-skill { box-shadow: 0 8px 28px #100c181a; }
 :root[data-theme="dark"] .pointer-surface { --muted: var(--muted-on-lit-surface); }
 :root[data-theme="dark"] .pointer-surface:hover { border-color: color-mix(in srgb, var(--project-accent, var(--accent)) 65%, var(--border)); }

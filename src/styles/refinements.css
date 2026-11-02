@@ -9,7 +9,7 @@
 .pointer-glow { position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none; }
 .magnetic-target { display: inline-flex; vertical-align: middle; }
 .magnetic { will-change: auto; }
-.magnetic-target:focus-within .magnetic { transform: none !important; }
+.magnetic:focus-visible { transform: none !important; }
 
 .about-editorial, .experience-editorial { display: grid; grid-template-columns: .8fr 1.2fr; gap: 80px; }
 .about-signoff { max-width: 240px; margin-top: 28px; font-family: var(--font-mono); font-size: .75rem; line-height: 1.85; color: var(--muted); }

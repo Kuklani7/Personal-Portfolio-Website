@@ -3,8 +3,8 @@ import usePointerField from "../hooks/usePointerField"
 
 export default function Magnetic({ as = "a", children, className = "", ...props }) {
   const { ref, bind, offsetX, offsetY, interactive } = usePointerField({ enabled: !props.disabled && !props["aria-disabled"] })
-  const x = useTransform(offsetX, (value) => value * 3)
-  const y = useTransform(offsetY, (value) => value * 2)
+  const x = useTransform(offsetX, (value) => value * 5)
+  const y = useTransform(offsetY, (value) => value * 3)
   const Component = as === "button" ? motion.button : motion.a
   return (
     <span ref={ref} className="magnetic-target" {...bind}>

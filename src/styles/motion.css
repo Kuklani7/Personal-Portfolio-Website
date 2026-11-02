@@ -1,0 +1,43 @@
+/* Each ambient transform lives inside the separate pointer-parallax layer. */
+.home-wash-drift { animation-play-state: paused; will-change: transform; }
+.home-wash-drift-blue { animation: ambient-blue var(--duration-ambient-blue) ease-in-out infinite; animation-play-state: paused; }
+.home-wash-drift-peach { animation: ambient-peach var(--duration-ambient-peach) ease-in-out -7s infinite; animation-play-state: paused; }
+.home-section[data-ambient-running="true"] .home-wash-drift { animation-play-state: running; }
+@keyframes ambient-blue {
+  0%, 100% { transform: translate(-10px, 3px); opacity: .8; }
+  40% { transform: translate(12px, -9px); opacity: 1; }
+  72% { transform: translate(3px, 11px); opacity: .88; }
+}
+@keyframes ambient-peach {
+  0%, 100% { transform: translate(9px, -6px); opacity: .9; }
+  46% { transform: translate(-13px, 8px); opacity: .72; }
+  78% { transform: translate(-3px, -10px); opacity: 1; }
+}
+
+/* Six native CSS typing steps: no per-character React updates or boot timers. */
+.terminal-boot-command { animation: terminal-command-type 330ms steps(6, end) 360ms both; }
+.terminal-welcome-line { animation: terminal-line-reveal 300ms var(--ease-motion) both; animation-delay: calc(810ms + var(--terminal-line, 0) * 60ms); }
+@keyframes terminal-command-type { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0% 0 0); } }
+@keyframes terminal-line-reveal { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.terminal-boot-cancelled .terminal-boot-command, .terminal-boot-cancelled .terminal-welcome-line { animation: none; clip-path: none; opacity: 1; transform: none; }
+
+.timeline-item::before { transition: background-color var(--duration-hover), box-shadow var(--duration-hover), border-color var(--duration-hover); }
+.timeline-item[data-revealed="true"]::before { background: var(--accent); box-shadow: 0 0 0 1px var(--accent), 0 0 0 5px color-mix(in srgb, var(--accent) 9%, transparent); }
+@property --showcase-accent { syntax: "<color>"; inherits: true; initial-value: #294cdb; }
+.project-carousel { transition: --showcase-accent var(--duration-theme) ease; }
+.project-counter { color: var(--showcase-accent, var(--text)); transition: color var(--duration-theme) ease; }
+.project-picker[aria-pressed="true"] { background: var(--showcase-accent, var(--accent)); transition: background-color var(--duration-theme) ease; }
+.project-arrow { transition: background-color var(--duration-hover), border-color var(--duration-hover), color var(--duration-hover); }
+.project-arrow:hover:not([aria-disabled="true"]) { color: var(--showcase-accent, var(--accent)); border-color: var(--showcase-accent, var(--accent)); }
+.magnetic:focus-visible { transform: none !important; translate: none !important; }
+.theme-transition :where(.terminal-line, .terminal-command-name, .terminal-prompt, .terminal-input-row, .terminal-titlebar, .terminal-status, .terminal-header-icon, .skill-symbol) { transition: background-color var(--duration-theme) ease, border-color var(--duration-theme) ease, color var(--duration-theme) ease; }
+@media (any-hover: hover) and (any-pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .magnetic > svg { transition: translate var(--duration-hover) var(--ease-motion); }
+  .magnetic:hover > svg:last-of-type { translate: 2px -1px; }
+  .magnetic:focus-visible > svg { translate: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-wash-drift { animation: none; transform: none; opacity: 1; will-change: auto; }
+  .terminal-boot-command, .terminal-welcome-line { animation: none; clip-path: none; opacity: 1; transform: none; }
+  .project-carousel { transition: none; }
+}
